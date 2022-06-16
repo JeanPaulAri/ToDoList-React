@@ -9,6 +9,7 @@ function App() {
 
     const [input,setInput]= useState("");
     const [activities,setActivities]= useState([ ]);
+    const [editActivity,setEditActivity]= useState(null);
   return (
     <div className="container">
         <div className="app-wrapper">
@@ -21,12 +22,15 @@ function App() {
                     setInput={setInput}
                     activities={activities}
                     setActivities={setActivities}
+                    editActivity={editActivity}
+                    setEditActivity={setEditActivity}
                 />
             </div>
             <div>
                 <List
                     activities={activities}
                     setActivities={setActivities}
+                    setEditActivity={setEditActivity}
                 />
             </div>
         </div>
