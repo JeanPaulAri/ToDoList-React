@@ -1,12 +1,15 @@
 import React from 'react';
+import {v4 as uuidV4} from 'uuid';
 
-const Form = ( input, setInput, Activities, setActivities ) => {
+const ActivitiesForm = ({input, setInput, activities, setActivities}) => {
 
     const inputChange = (e) => {
-        setInput(e.event.target);
+        setInput(e.target.value);
     }
     const submitChange = (e) => {
         e.preventDefault();
+        setActivities([ ...activities, { id: uuidV4(), title: input, completed: false }]);
+        setInput("");
     }
     return (
         <form onSubmit={submitChange}>
@@ -25,4 +28,4 @@ const Form = ( input, setInput, Activities, setActivities ) => {
     );
 };
 
-export default Form;
+export default ActivitiesForm;

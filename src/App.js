@@ -1,13 +1,14 @@
 import React,{useState} from 'react';
 
 import Header from './Components/Header';
-import Form from './Components/Form';
+import ActivitiesForm from './Components/activitiesForm';
+import List from './Components/List';
 import './App.scss';
 
 function App() {
 
     const [input,setInput]= useState("");
-    const [Activities,setActivities]= useState([]);
+    const [activities,setActivities]= useState([ ]);
   return (
     <div className="container">
         <div className="app-wrapper">
@@ -15,14 +16,19 @@ function App() {
                 <Header />
             </div>
             <div>
-                <Form
+                <ActivitiesForm
                     input={input}
                     setInput={setInput}
-                    Activities={Activities}
+                    activities={activities}
                     setActivities={setActivities}
                 />
             </div>
-
+            <div>
+                <List
+                    activities={activities}
+                    setActivities={setActivities}
+                />
+            </div>
         </div>
     </div>
   );
