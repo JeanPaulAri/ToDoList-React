@@ -30,7 +30,7 @@ const List = ({activities,setActivities,setEditActivity}) => {
                             <input
                                 type="text"
                                 value={activity.title}
-                                className="list"
+                                className={` list ${activity.completed ? "complete" : ""}`}
                                 onChange={(e) => e.preventDefault()}
                             />
                             <div>

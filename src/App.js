@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 
 import Header from './Components/Header';
 import ActivitiesForm from './Components/activitiesForm';
@@ -7,9 +7,17 @@ import './App.scss';
 
 function App() {
 
+    const InitialState = JSON.parse(localStorage.getItem("activities")) || [];
     const [input,setInput]= useState("");
-    const [activities,setActivities]= useState([ ]);
+    const [activities,setActivities]= useState(InitialState);
     const [editActivity,setEditActivity]= useState(null);
+
+    useEffect(
+        () => {
+            localStorage.setItem("activities", JSON.stringify(activities));
+        },
+        [activities]
+    );
   return (
     <div className="container">
         <div className="app-wrapper">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {v4 as uuidV4} from 'uuid';
 
 const ActivitiesForm = ({input, setInput, activities, setActivities, editActivity, setEditActivity}) => {
@@ -9,6 +9,17 @@ const ActivitiesForm = ({input, setInput, activities, setActivities, editActivit
         setActivities(newActivity);
         setEditActivity("");
     }
+    useEffect(
+        () => {
+            if(editActivity){
+                setInput(editActivity.title);
+            }
+            else{
+                setInput("");
+            }
+        },
+        [setInput,editActivity]
+    );
     const inputChange = (e) => {
         setInput(e.target.value);
     }
@@ -33,7 +44,7 @@ const ActivitiesForm = ({input, setInput, activities, setActivities, editActivit
                 onChange={inputChange}
              />
             <button className="button-add" type="submit">
-                Add
+                { editActivity ? "Save" : "Add" }
             </button>
         </form>
     );
