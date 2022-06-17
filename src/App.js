@@ -7,11 +7,10 @@ import './App.scss';
 
 function App() {
 
-    const InitialState = JSON.parse(localStorage.getItem("activities")) || [];
     const [input,setInput]= useState("");
-    const [activities,setActivities]= useState(InitialState);
+    const [activities,setActivities]= useState([]);
     const [editActivity,setEditActivity]= useState(null);
-
+    //const initialState = JSON.parse(localStorage.getItem("activities")) || [];
     useEffect(
         () => {
             localStorage.setItem("activities", JSON.stringify(activities));
